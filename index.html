@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DS+Digital&display=swap">
+</head>
+<body>
+    <h1 class="heading">Online Calculator</h1>
+    <div class="card">
+        <div class="text-div">
+            <input type="text"  class="glass" placeholder="0">
+        </div>
+        <div class="button-container">
+            <div class="num-container">
+                <div class="buttons zero" onclick="calculate('0')">0</div>
+                <div class="buttons one" onclick="calculate('1')">1</div>
+                <div class="buttons two" onclick="calculate('2')">2</div>
+                <div class="buttons three" onclick="calculate('3')">3</div>
+                <div class="buttons four" onclick="calculate('4')">4</div>
+                <div class="buttons five" onclick="calculate('5')">5</div>
+                <div class="buttons six" onclick="calculate('6')">6</div>
+                <div class="buttons seven" onclick="calculate('7')">7</div>
+                <div class="buttons eight" onclick="calculate('8')">8</div>
+                <div class="buttons nine" onclick="calculate('9')">9</div>
+                <div class="buttons double-zero" onclick="calculate('00')">00</div>
+                <div class="buttons point" onclick="calculate('.')">.</div>
+             
+
+            </div>
+           <div class="op-container">
+            <div class="ac buttons op green" onclick="clear1()">AC</div>
+            <div class="sq buttons op green" onclick="sq()">SQ</div>
+            <div class="rt buttons op green" onclick="root()">RT</div>
+            <div class="dl buttons op green" onclick="del()">DL</div>
+            <div class="add buttons op math" onclick="calculate('+')">+</div>
+            <div class="sub buttons op math" onclick="calculate('-')">-</div>
+            <div class="mul buttons op math" onclick="calculate('*')">*</div>
+            <div class="divide buttons op math" onclick="calculate('/')">/</div>
+            <div class="modulo buttons op math" onclick="calculate('%')">%</div>
+            <div class="equals-to buttons op math" onclick="result()">=</div>
+           </div>
+            
+        </div>
+    </div>
+    <script>
+        let count=0;
+
+function calculate(a) {
+    if(count>7) {
+        document.querySelector('.glass').style.fontSize='32px';
+    }
+        document.querySelector(".glass").value +=a;
+        
+        count++;
+}
+function clear1(){
+   document.querySelector('.glass').value ="";
+}
+function result() {
+    document.querySelector('.glass').value = eval(document.querySelector('.glass').value);
+}
+function del() {
+    document.querySelector('.glass').value = document.querySelector('.glass').value.slice(0,-1);
+}
+function sq() {
+    let currentValue = parseFloat(document.querySelector('.glass').value);
+    if(!isNaN(currentValue)) {
+        document.querySelector('.glass').value = Math.pow(currentValue,2);
+    }
+}
+function root() {
+    let currentValue = parseFloat(document.querySelector('.glass').value);
+    if(!isNaN(currentValue) && currentValue>=0) {
+        document.querySelector('.glass').value = Math.sqrt(currentValue);
+    }
+}
+    </script>
+</body>
+</html>
